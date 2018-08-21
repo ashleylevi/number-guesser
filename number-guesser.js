@@ -32,6 +32,7 @@ resetButton.addEventListener('click', resetGuess);
 minButton.addEventListener('keyup', updateMinValue);
 maxButton.addEventListener('keyup', updateMaxValue);
 
+//enable or disable buttons
 function enableButtons() {
   if (userGuessInput.value === '') {
     guessButton.disabled = true;
