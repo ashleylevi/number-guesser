@@ -45,7 +45,7 @@ function enableButtons() {
   }
 };
 
-/*function to generate random number 
+/*generate random number 
 based on min and max entered by user*/
 function randomNumberGenerator() {
   min = Math.ceil(min);
@@ -54,7 +54,7 @@ function randomNumberGenerator() {
 
 }
 
-/*function to update the minimum value 
+/*update the minimum value 
 based on user input*/
 function updateMinValue() {
 min = parseInt(document.querySelector('#min-button').value);
@@ -64,7 +64,7 @@ console.log('random number is ' + randomNumber);
 };
 
 
-/*function to update the maximum value 
+/*update the maximum value 
 based on user input*/
 function updateMaxValue() {
 max = parseInt(document.querySelector('#max-button').value);
