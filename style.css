@@ -34,12 +34,12 @@ span {
 }
 
 /*min input label*/
-#minLabel {
+#min-label {
   display: inline-block;
 }
 
 /*max input label*/
-#maxLabel {
+#max-label {
 display: inline-block;
 }
 
@@ -57,6 +57,10 @@ input[type=text] {
 ::placeholder {
   color: #D0D2D3;
   font-weight: 300;
+}
+
+#guess-count {
+margin-top: 20px;
 }
 
 /* guess and clear buttons */

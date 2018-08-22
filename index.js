@@ -21,13 +21,15 @@ var max = parseInt(document.querySelector('#max-button').value);
 // display min/max feedback
 var minMaxFeedback = document.querySelector('.min-max-feedback');
 // label for min input
-var minLabel = document.querySelector('#minLabel');
+var minLabel = document.querySelector('#min-label');
 // lavel for max input
-var maxLabel = document.querySelector('#maxLabel');
+var maxLabel = document.querySelector('#max-label');
 // random value generated based on min/max input
 var randomNumber = randomNumberGenerator();
 console.log('random number is ' + randomNumber);
-
+// counter for amout of incorrect guesses
+var countNumber = document.querySelector('#count-number');
+var count = 0;
 
 // event listeners
 userGuessInput.addEventListener('keyup', enableButtons);
@@ -55,7 +57,6 @@ function randomNumberGenerator() {
   // min = Math.ceil(min);
   // max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; 
-
 }
 
 //update the minimum value based on user input
@@ -66,7 +67,6 @@ randomNumber = randomNumberGenerator();
 console.log('random number is ' + randomNumber);
 };
 
-
 //update the maximum value based on user input
 function updateMaxValue() {
 max = parseInt(document.querySelector('#max-button').value);
@@ -74,7 +74,6 @@ console.log('max is ' + max);
 randomNumber = randomNumberGenerator();
 console.log('random number is ' + randomNumber);
 };
-
 
 //function for user guess feedback
 function checkUserGuess(event) {
@@ -93,11 +92,15 @@ function checkUserGuess(event) {
       guessFeedback.innerText = `Now guess a number between ${min} and ${max}`;
       randomNumber = randomNumberGenerator();
       console.log('New random number is ' + randomNumber);
-      updateMaxMin()    
+      updateMaxMin();
+      resetCount();   
+      userGuessInput.value = ''; 
     } else if (userGuessInteger < randomNumber && userGuessInteger >= min) {
       guessFeedback.innerText = 'That is too low';
+      guessCount();
     } else if (userGuessInteger > randomNumber && userGuessInteger <= max) {
       guessFeedback.innerText = 'That is too high';
+      guessCount();
     } else {
       guessFeedback.innerText = 'Please enter a number within range!';
       // displayGuess.innerText = "not a number!";
@@ -121,6 +124,7 @@ function resetGuess() {
   maxLabel.innerText = 'Pick Maximum Number';
   minButton.style.display = '';
   maxButton.style.display = '';
+  resetCount();
   // randomNumber = randomNumberGenerator();
   // console.log('New random number is ' + randomNumber); 
 };
@@ -128,13 +132,28 @@ function resetGuess() {
 /* hide's min and max input fields and show's user 
 the new min and max range */
 function updateMaxMin() {
-  minLabel = document.querySelector('#minLabel');
-  maxLabel = document.querySelector('#maxLabel');;
+  minLabel = document.querySelector('#min-label');
+  maxLabel = document.querySelector('#max-label');;
   var newMinLabel = minLabel.innerText = `New mimimum is ${min} and `;
   var newMaxLabel = maxLabel.innerText = `New maximum is ${max}`;
   minButton.style.display = 'none';
   maxButton.style.display = 'none';
 };
+
+//updates amount of incorrect guesses
+function guessCount() {
+  count++;
+  console.log('guess count is ' + count);
+  countNumber = document.querySelector('#count-number');
+  countNumber.innerText = count;
+};
+
+//reset guess count
+function resetCount() {
+  count = 0;
+  countNumber.innerText = count;
+};
+
 
 
 
