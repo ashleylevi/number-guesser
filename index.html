@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Number Guesser</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+</head>
+  <body>
+    <!-- Number Guesser header -->
+    <header>
+      <p id="header"><span>Number</span>Guesser</p>
+    </header>
+    <!-- User input for min and max number -->
+    <section id="one">
+      <form class="reset">
+        <label><p id="min-label">Pick Minimum Number</p>
+        <input type="number" class="min-max" id="min-button" oninput="updateMinValue()"  placeholder="Enter minimum"> </label>
+        <label><p id="max-label">Pick Maximum Number</p>
+        <input type="number" class="min-max" id="max-button" oninput="updateMaxValue()" placeholder="Enter maximum"> </label>
+      </form>
+    </section>
+    <section id="two">
+      <!-- A text input field for guessing the number -->
+      <form>
+          <input type="text" class="guess-input" id="guess-input" placeholder="Enter your guess">
+      </form>
+      <p id="guess-count">Guess Count: <span id="count-number">0</span></p>
+    </section>
+    <section id="three">
+      <form>
+      <!-- A button for submitting a guess -->
+        <button type="submit" class="button" id="guess-button" disabled>Guess</button>
+      <!-- A button for clearing the input field -->
+        <button type="submit" class="button" id="clear-button" disabled>Clear</button>
+      </form>
+    </section>
+    <section id="four">
+      <!-- Display the user's most recent guess, results and feedback -->
+      <p class="your-guess-was">What is</p>
+      <p class="display-guess">?</p>
+      <p class="guess-feedback">the random number</p>
+    </section>
+    <section id="five">
+      <!-- A button that resets the game -->
+      <form>
+        <button type="reset" class="button" id="reset-button" disabled>Reset</button>
+      </form>
+    </section>
+    <script src="index.js"></script>
+  </body>
+  </html>
