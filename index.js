@@ -24,8 +24,7 @@ userGuessInput.addEventListener('keyup', enableButtons);
 guessButton.addEventListener('click', checkUserGuess);
 clearButton.addEventListener('click', clearGuess);
 resetButton.addEventListener('click', resetGuess);
-// minButton.addEventListener('keyup', updateMinValue);
-// maxButton.addEventListener('keyup', updateMaxValue);
+
 
 //enable or disable buttons
 function enableButtons() {
@@ -38,68 +37,65 @@ function enableButtons() {
     clearButton.disabled = false;
     resetButton.disabled = false;
   }
-};
+}
 
 //generate random number based on min and max entered by user
 function randomNumberGenerator() {
-  // min = Math.ceil(min);
-  // max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
 
 //update the minimum value based on user input
 function updateMinValue() {
-min = parseInt(document.querySelector('#min-button').value);
-console.log('min is ' + min);
-randomNumber = randomNumberGenerator();
-console.log('random number is ' + randomNumber);
-};
+  min = parseInt(document.querySelector('#min-button').value);
+  console.log('min is ' + min);
+  randomNumber = randomNumberGenerator();
+  console.log('random number is ' + randomNumber);
+}
 
 //update the maximum value based on user input
 function updateMaxValue() {
-max = parseInt(document.querySelector('#max-button').value);
-console.log('max is ' + max);
-randomNumber = randomNumberGenerator();
-console.log('random number is ' + randomNumber);
-};
+  max = parseInt(document.querySelector('#max-button').value);
+  console.log('max is ' + max);
+  randomNumber = randomNumberGenerator();
+  console.log('random number is ' + randomNumber);
+}
 
 //function for user guess feedback
 function checkUserGuess(event) {
   event.preventDefault();
 
-    var userGuessInteger = parseInt(userGuessInput.value);
-    displayGuess.innerText = userGuessInteger;
-    yourGuessWas.innerText = 'Your guess was';
+  var userGuessInteger = parseInt(userGuessInput.value);
+  displayGuess.innerText = userGuessInteger;
+  yourGuessWas.innerText = 'Your guess was';
 
-      if ((isNaN(userGuessInteger)) === true) {
-      guessFeedback.innerText = 'Please enter a numerical value!';
-    } else if (userGuessInteger === randomNumber) {
-      yourGuessWas.innerText = "BOOM!";
-      min -= 10;
-      max += 10;
-      guessFeedback.innerText = `Now guess a number between ${min} and ${max}`;
-      randomNumber = randomNumberGenerator();
-      console.log('New random number is ' + randomNumber);
-      updateMaxMin();
-      resetCount();   
-      userGuessInput.value = ''; 
-    } else if (userGuessInteger < randomNumber && userGuessInteger >= min) {
-      guessFeedback.innerText = 'That is too low';
-      guessCount();
-    } else if (userGuessInteger > randomNumber && userGuessInteger <= max) {
-      guessFeedback.innerText = 'That is too high';
-      guessCount();
-    } else {
-      guessFeedback.innerText = 'Please enter a number within range!';
-      // displayGuess.innerText = "not a number!";
-    }
-};
+  if ((isNaN(userGuessInteger)) === true) {
+    guessFeedback.innerText = 'Please enter a numerical value!';
+  } else if (userGuessInteger === randomNumber) {
+    yourGuessWas.innerText = "BOOM!";
+    min -= 10;
+    max += 10;
+    guessFeedback.innerText = `Now guess a number between ${min} and ${max}`;
+    randomNumber = randomNumberGenerator();
+    console.log('New random number is ' + randomNumber);
+    updateMaxMin();
+    resetCount();   
+    userGuessInput.value = ''; 
+  } else if (userGuessInteger < randomNumber && userGuessInteger >= min) {
+    guessFeedback.innerText = 'That is too low';
+    guessCount();
+  } else if (userGuessInteger > randomNumber && userGuessInteger <= max) {
+    guessFeedback.innerText = 'That is too high';
+    guessCount();
+  } else {
+    guessFeedback.innerText = 'Please enter a number within range!';
+  }
+}
 
 //clear input fields
 function clearGuess(event) {
   event.preventDefault();
-    userGuessInput.value = '';
-};
+  userGuessInput.value = '';
+}
 
 //reset page
 function resetGuess() {
@@ -113,21 +109,19 @@ function resetGuess() {
   minButton.style.display = '';
   maxButton.style.display = '';
   resetCount();
-  enableButtons();
-  // randomNumber = randomNumberGenerator();
-  // console.log('New random number is ' + randomNumber); 
-};
+  enableButtons(); 
+}
 
 /* hide's min and max input fields and show's user 
 the new min and max range */
 function updateMaxMin() {
   minLabel = document.querySelector('#min-label');
-  maxLabel = document.querySelector('#max-label');;
+  maxLabel = document.querySelector('#max-label');
   var newMinLabel = minLabel.innerText = `New mimimum is ${min} and `;
   var newMaxLabel = maxLabel.innerText = `New maximum is ${max}`;
   minButton.style.display = 'none';
   maxButton.style.display = 'none';
-};
+}
 
 //updates amount of incorrect guesses
 function guessCount() {
@@ -135,12 +129,12 @@ function guessCount() {
   console.log('guess count is ' + count);
   countNumber = document.querySelector('#count-number');
   countNumber.innerText = count;
-};
+}
 
 //reset guess count
 function resetCount() {
   count = 0;
   countNumber.innerText = count;
-};
+}
 
 
